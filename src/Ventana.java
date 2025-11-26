@@ -1,6 +1,6 @@
 public class Ventana {
-//Escriba los nombres de los Autores
-    //Autor1: Apellido Nombre
-    //Autor2: Apellido Nombre
-    
+    // Escriba los nombres de los Autores
+    // Autor1: CARLOS ANGULO
+    // Autor2: RICHARD SORIA
+
 }
