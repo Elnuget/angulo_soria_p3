@@ -1,50 +1,25 @@
-# Cómo Desasociar un Repositorio Git
+# Desasociación del Repositorio Git
 
-Este documento describe los pasos para desasociar un repositorio local de su remote original y conectarlo a una nueva cuenta de GitHub.
+## Proceso
 
-## Comandos Utilizados
+Desasocié el repositorio local del remote original y lo subí a mi cuenta de GitHub.
 
-### 1. Verificar el remote actual
+### Comandos ejecutados
+
 ```bash
+# Verificar remote actual
 git remote -v
-```
-Este comando muestra los repositorios remotos configurados actualmente.
 
-### 2. Eliminar el remote existente
-```bash
+# Eliminar remote existente
 git remote remove origin
-```
-Este comando elimina la conexión con el repositorio remoto original.
 
-### 3. Verificar que se eliminó correctamente
-```bash
-git remote -v
-```
-Verifica que no haya ningún remote configurado (no debería mostrar nada).
+# Agregar mi repositorio
+git remote add origin https://github.com/Elnuget/angulo_soria_p3.git
 
-### 4. Agregar el nuevo remote (tu cuenta)
-```bash
-git remote add origin https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-```
-Reemplaza `TU_USUARIO` y `TU_REPOSITORIO` con tu información de GitHub.
-
-### 5. Subir el código a tu repositorio
-```bash
+# Subir el código
 git push -u origin main
 ```
-O si tu rama principal se llama `master`:
-```bash
-git push -u origin master
-```
 
-## Resumen
+## Resultado
 
-1. ✅ Verificar remote actual
-2. ✅ Eliminar remote origin
-3. ✅ Crear nuevo repositorio en GitHub
-4. ✅ Agregar nuevo remote
-5. ✅ Push al nuevo repositorio
-
----
-
-**Nota:** Asegúrate de crear primero el repositorio en GitHub antes de ejecutar el paso 4.
+El repositorio quedó publicado en: **https://github.com/Elnuget/angulo_soria_p3**
