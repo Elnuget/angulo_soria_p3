@@ -16,24 +16,24 @@ public class Ventana {
     private JButton btnEditarProducto;
     private JList lstProductosOrdenados;
     private JButton btnOrdenarProductos;
-    private JComboBox cbcCategoriaProducto;
+    private JComboBox cbcCategoriaProductoBuscar;
     private JTextField txtNombreBuscarProducto;
     private JButton btnBuscarProducto;
     private JButton btnBuscarProduto;
+    private JComboBox cbcCategoriaProducto;
     // Escriba los nombres de los Autores
     // Autor1: CARLOS ANGULO
     // Autor2: RICHARD SORIA
 
     InventarioProductos inventarioProductos = new InventarioProductos();
     int indice;
-    String categoria;
 
     public void limpiarCampos() {
         txtNombreProducto.setText("");
         txtPrecioProducto.setText("");
         spiIdProducto.setValue(0);
         spiCantidadProducto.setValue(0);
-        categoria = "";
+        cbcCategoriaProducto.setSelectedIndex(0);
     }
 
     public void actualizarListaProductos() {
@@ -60,7 +60,7 @@ public class Ventana {
                     Producto productoSeleccionado = inventarioProductos.getProductos().get(indice);
                     txtNombreProducto.setText(productoSeleccionado.getNombre());
                     txtPrecioProducto.setText(String.valueOf(productoSeleccionado.getPrecio()));
-                    categoria = productoSeleccionado.getCategoria();
+                    cbcCategoriaProducto.setSelectedItem(productoSeleccionado.getCategoria());
                     spiIdProducto.setValue(productoSeleccionado.getId());
                     spiCantidadProducto.setValue(productoSeleccionado.getCantidad());
                     JOptionPane.showMessageDialog(null, "Producto seleccionado: " + productoSeleccionado.toString());
@@ -75,7 +75,7 @@ public class Ventana {
                 if (producto != null) {
                     txtNombreProducto.setText(producto.getNombre());
                     txtPrecioProducto.setText(String.valueOf(producto.getPrecio()));
-                    categoria = producto.getCategoria();
+                    cbcCategoriaProducto.setSelectedItem(producto.getCategoria());
                     spiIdProducto.setValue(producto.getId());
                     spiCantidadProducto.setValue(producto.getCantidad());
                     JOptionPane.showMessageDialog(null, "Producto Encontrado: " + producto.toString());
@@ -98,6 +98,7 @@ public class Ventana {
                 String nombre = txtNombreProducto.getText();
                 float precio;
                 int cantidad = Integer.parseInt(spiCantidadProducto.getValue().toString());
+                String categoria = cbcCategoriaProducto.getSelectedItem().toString();
 
                 // Validar campos numéricos
                 try{
@@ -129,7 +130,7 @@ public class Ventana {
         btnOrdenarProductos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String categoria = cbcCategoriaProducto.getSelectedItem().toString();
+                String categoria = cbcCategoriaProductoBuscar.getSelectedItem().toString();
                 List<Producto> productosOrdenados = inventarioProductos.ordenarPorPrecioEnCategoria(categoria);
                 DefaultListModel dlm = new DefaultListModel();
                 for (Producto p : productosOrdenados) {
