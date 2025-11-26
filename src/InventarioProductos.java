@@ -108,7 +108,6 @@ public class InventarioProductos {
     }
 
     // Ordenar productos por precio (mayor a menor) dentro de una categoría
-    // Usando algoritmo Bubble Sort (sin Collections.sort)
     public ArrayList<Producto> ordenarPorPrecioEnCategoria(String categoria) {
         // Primero obtener productos de la categoría
         ArrayList<Producto> productosCat = buscarPorCategoria(categoria);
@@ -150,24 +149,12 @@ public class InventarioProductos {
         return productos;
     }
 
-    // Eliminar producto por ID
-    public boolean eliminarProducto(int id) {
-        for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getId() == id) {
-                productos.remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
-
     // Actualizar producto
     public boolean actualizarProducto(Producto productoActualizado) {
-        for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getId() == productoActualizado.getId()) {
-                productos.set(i, productoActualizado);
-                return true;
-            }
+        Producto producto = busquedaLineal(productoActualizado.getId());
+        if (producto != null) {
+            productos.set(productos.indexOf(producto), productoActualizado);
+            return true;
         }
         return false;
     }
